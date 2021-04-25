@@ -23,8 +23,8 @@ http.createServer(function (request, res) {
 function handleWebhook(hookObj) {
     // const event = hookObj.event_name
     // const git_http_url = hookObj.repository.git_http_url
-    console.log('[%s]trigger push event, and branch is:[%s]',new Date(), branch)
     const branch = hookObj.ref
+    console.log('[%s]trigger push event, and branch is:[%s]',new Date(), branch)
     const config = configs.find(i => `refs/heads/${i.branch}` === branch)
     if (!config) {
         console.warn('没查分支对应的配置. branch=', branch)
