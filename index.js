@@ -23,6 +23,7 @@ http.createServer(function (request, res) {
 function handleWebhook(hookObj) {
     // const event = hookObj.event_name
     // const git_http_url = hookObj.repository.git_http_url
+    console.log('[%s]trigger push event, and branch is:[%s]',new Date(), branch)
     const branch = hookObj.ref
     const config = configs.find(i => `refs/heads/${i.branch}` === branch)
     if (!config) {
@@ -34,7 +35,7 @@ function handleWebhook(hookObj) {
 
 // 执行对应的指令
 function execCommand(command, workdir) {
-    console.log('exec command', command, workdir)
+    console.log('[%s]exec command:%s, workdir:%s',new Date(), command, workdir)
     exec(command, {
         cwd: workdir
     }, function (error, stdout, stderr) {

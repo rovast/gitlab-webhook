@@ -4,6 +4,17 @@
 
 原始需求是在测试服务器监听 Push 事件，自动部署最新代码。
 
+## 运行
+
+1. 配置 `config.js`
+2. 启动 server，监听 21009 端口
+```shell script
+node index.js
+
+# 或者使用 pm2
+# pm2 start index.js
+```
+
 ### 配置样例
 
 1. master 分支 push 事件时，更新最新代码，并打包
